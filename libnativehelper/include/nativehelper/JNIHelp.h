@@ -24,7 +24,7 @@
 #define _NATIVEHELPER_JNIHELP_H
 
 #include "jni.h"
-#include "utils.h"
+#include "utils/Log.h"
 #include <unistd.h>
 
 #ifndef NELEM
