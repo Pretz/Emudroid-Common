@@ -17,12 +17,12 @@ LOCAL_SRC_FILES := \
 
 # All of the shared libraries we link against.
 LOCAL_SHARED_LIBRARIES := \
-	libdl \
-	libnativehelper \
-	libutils
+	libnativehelper
 
 # Static libraries.
 LOCAL_STATIC_LIBRARIES :=
+
+LOCAL_LDLIBS := -ldl -llog
 
 # Also need the JNI headers.
 LOCAL_C_INCLUDES += \
@@ -39,3 +39,5 @@ LOCAL_CFLAGS += -O3 -fvisibility=hidden
 LOCAL_PRELINK_MODULE := false
 
 include $(BUILD_SHARED_LIBRARY)
+
+include $(call all-makefiles-under,$(LOCAL_PATH))
