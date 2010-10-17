@@ -420,6 +420,14 @@ Emulator_setOption(JNIEnv *env, jobject self, jstring jname, jstring jvalue)
 		env->ReleaseStringUTFChars(jvalue, value);
 }
 
+static jint Emulator_getOption(JNIEnv *env, jobject self, jstring jname)
+{
+	const char *name = env->GetStringUTFChars(jname, NULL);
+	int value = engine->getOption(name);
+	env->ReleaseStringUTFChars(jname, name);
+	return value;
+}
+
 static void Emulator_getScreenshot(JNIEnv *env, jobject self, jobject jbuffer)
 {
 	pauseEmulator(env, self);
@@ -563,6 +571,7 @@ int register_Emulator(JNIEnv *env)
 		{ "fireLightGun", "(II)V", (void *) Emulator_fireLightGun },
 		{ "setOption", "(Ljava/lang/String;Ljava/lang/String;)V",
 				(void *) Emulator_setOption },
+		{ "getOption", "(Ljava/lang/String;)I", (void *) Emulator_getOption },
 
 		{ "getVideoWidth", "()I", (void *) Emulator_getVideoWidth },
 		{ "getVideoHeight", "()I", (void *) Emulator_getVideoHeight },

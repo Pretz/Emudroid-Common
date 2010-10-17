@@ -46,6 +46,7 @@ public:
 
 	virtual void fireLightGun(int x, int y) = 0;
 	virtual void setOption(const char *name, const char *value) = 0;
+	virtual int getOption(const char *name) { return 0; }
 };
 
 #endif
